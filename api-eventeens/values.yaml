@@ -126,7 +126,7 @@ tolerations: []
 
 affinity: {}
 
-secretRef:
+configMapRef:
   # This is for setting up a secret reference for the container.
   # This is useful for pulling images from private repositories.
   name: "api-eventeens-secret"
