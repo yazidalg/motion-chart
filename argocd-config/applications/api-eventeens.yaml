@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api-eventeens
+  namespace: argocd
+spec:
+  project: api-eventeens-project
+  source:
+    repoURL: https://github.com/yazidalg/motion-chart.git
+    path: "motion-chart"
+    targetRevision: main
+    helm:
+      release-name: api-eventeens
+      valueFiles:
+        - "api-eventeens/values.yaml"
+  destination:
+    server: https://10.21.64.1:6443
+    namespace: api-eventeens

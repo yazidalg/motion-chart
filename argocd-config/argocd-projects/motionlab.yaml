@@ -9,7 +9,7 @@ spec:
     - "*"
   destinations:
     - namespace: "*"
-      server:
+      server: https://10.21.64.1:6443
   clusterResourceWhitelist:
     - group: "*"
       kind: "*"
