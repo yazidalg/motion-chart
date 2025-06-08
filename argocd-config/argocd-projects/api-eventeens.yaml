@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: api-eventeens-project
-  namespace: argo
+  namespace: argocd
 spec:
   description: Api Eventeens Project
   sourceRepos:
