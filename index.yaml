@@ -3,12 +3,12 @@ entries:
   motion-chart:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-06-08T15:06:59.98027+07:00"
+    created: "2025-06-08T16:40:21.868483+07:00"
     description: A Helm chart for Kubernetes
-    digest: 089275ecd2da15208ea0361e57244499f021f70389b504a46cce5a94a9264291
+    digest: 54b0855402bb34520beb72ccb3facd17df15062fcb2ff80106ae9682ca3d3b72
     name: motion-chart
     type: application
     urls:
     - https://raw.githubusercontent.com/yazidalg/motion-chart/main/motion-chart-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-08T15:06:59.97829+07:00"
+generated: "2025-06-08T16:40:21.867139+07:00"
