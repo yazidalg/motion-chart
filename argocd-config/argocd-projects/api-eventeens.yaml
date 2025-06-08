@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: api-eventeens-project
+  namespace: argo
+spec:
+  description: Api Eventeens Project
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: "*"
+      server:
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  orphanedResources:
+    warn: false
+  roles:
+    - name: admin
+      description: Role for Api Eventeens Project for Tugas MEKPL
+      policies:
+        - p, proj:api-eventeens-project:admin, applications, *, api-eventeens-project/*, allow
+      groups:
+        - general

@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: backyard-project
+  name: motionlab-project
   namespace: argo
 spec:
-  description: Backyard Project
+  description: Api Eventeens Project
   sourceRepos:
     - "*"
   destinations:
@@ -17,8 +17,8 @@ spec:
     warn: false
   roles:
     - name: admin
-      description: Devops Role for Backyard Project
+      description: Role for Motionlab Project
       policies:
-        - p, proj:backyard-project:admin, applications, *, backyard-project/*, allow
+        - p, proj:motionlab-project:admin, applications, *, motionlab-project/*, allow
       groups:
-        - devops
+        - general
