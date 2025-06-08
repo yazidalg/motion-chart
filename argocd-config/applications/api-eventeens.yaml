@@ -15,3 +15,7 @@ spec:
   destination:
     server: https://10.21.64.1:6443
     namespace: api-eventeens
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
