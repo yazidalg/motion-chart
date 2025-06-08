@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: backyard-project
+  namespace: argo
+spec:
+  description: Backyard Project
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: "*"
+      server:
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  orphanedResources:
+    warn: false
+  roles:
+    - name: admin
+      description: Devops Role for Backyard Project
+      policies:
+        - p, proj:backyard-project:admin, applications, *, backyard-project/*, allow
+      groups:
+        - devops
