@@ -7,7 +7,7 @@ spec:
   project: api-eventeens-project
   source:
     repoURL: https://github.com/yazidalg/motion-chart.git
-    path: "motion-chart"
+    path: .
     targetRevision: main
     helm:
       valueFiles:
