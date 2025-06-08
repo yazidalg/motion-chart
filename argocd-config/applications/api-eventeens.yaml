@@ -8,6 +8,7 @@ spec:
   source:
     repoURL: https://github.com/yazidalg/motion-chart.git
     path: "motion-chart"
+    chart: "motion-chart"
     targetRevision: main
     helm:
       release-name: api-eventeens
