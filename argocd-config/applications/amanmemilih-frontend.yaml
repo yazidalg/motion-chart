@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: amanmemilih-frontend
+  namespace: argocd
+spec:
+  project: amanmemilih-frontend-project
+  source:
+    repoURL: https://github.com/yazidalg/motion-chart.git
+    path: .
+    targetRevision: main
+    helm:
+      valueFiles:
+        - "amanmemilih-frontend/values.yaml"
+  destination:
+    server: https://10.21.64.1:6443
+    namespace: amanmemilih-fe
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

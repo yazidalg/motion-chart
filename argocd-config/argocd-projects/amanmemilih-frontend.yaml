@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: amanmemilih-frontend-project
+  namespace: argocd
+spec:
+  description: Amanmemilih Frontend Project
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: "*"
+      server: https://10.21.64.1:6443
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  orphanedResources:
+    warn: false
+  roles:
+    - name: admin
+      description: Role for AmanMemilih Project
+      policies:
+        - p, proj:amanmemilih-frontend-project:admin, applications, *, amanmemilih-frontend-project/*, allow
+      groups:
+        - general
