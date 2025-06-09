@@ -1300,12 +1300,11 @@ grafana:
     ## IngressClassName for Grafana Ingress.
     ## Should be provided if Ingress is enable.
     ##
-    # ingressClassName: nginx
+    ingressClassName: nginx
 
     ## Annotations for Grafana Ingress
     ##
     annotations:
-      kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/rewrite-target: /
 
     ## Labels to be added to the Ingress
@@ -3532,7 +3531,7 @@ prometheus:
   #     someoneelse:$apr1$DMZX2Z4q$6SbQIfyuLQd.xmo/P0m2c.
 
   ingress:
-    enabled: false
+    enabled: true
 
     ingressClassName: "nginx"
 
