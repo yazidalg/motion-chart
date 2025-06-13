@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lidm-api
+  namespace: argocd
+spec:
+  project: lidm-api-project
+  source:
+    repoURL: https://github.com/yazidalg/motion-chart.git
+    path: .
+    targetRevision: main
+    helm:
+      valueFiles:
+        - "lidm-api/values.yaml"
+  destination:
+    server: https://10.21.64.1:6443
+    namespace: lidm-api
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

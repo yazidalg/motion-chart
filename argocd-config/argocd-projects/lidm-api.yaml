@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: lidm-api-project
+  namespace: argocd
+spec:
+  description: LIDM Api Project
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: "*"
+      server: https://10.21.64.1:6443
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  orphanedResources:
+    warn: false
+  roles:
+    - name: admin
+      description: Role for lidm-api Project
+      policies:
+        - p, proj:lidm-api-project:admin, applications, *, lidm-api-project/*, allow
+      groups:
+        - general
