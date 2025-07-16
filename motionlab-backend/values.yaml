@@ -100,14 +100,14 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 volumes:
-- name: motionlab-storage
-  persistentVolumeClaim:
-    claimName: motionlab-storage-pvc
+  - name: motionlab-storage
+    persistentVolumeClaim:
+      claimName: motionlab-storage-pvc
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts: []
-- name: motionlab-storage
-  mountPath: /app/storage/app/public
+volumeMounts:
+  - name: motionlab-storage
+    mountPath: /app/storage/app/public
 
 nodeSelector: {}
 
