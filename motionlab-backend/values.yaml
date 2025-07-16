@@ -111,7 +111,12 @@ volumeMounts:
 
 nodeSelector: {}
 
-tolerations: []
+# tolerations: []
+tolerations:
+- key: "node"
+  operator: "Equal"
+  value: "value"
+  effect: "NoSchedule"
 
 affinity: {}
 
