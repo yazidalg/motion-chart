@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: motionlab-backend-project
+  namespace: argocd
+spec:
+  description: MotionLab Backend Project
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: "*"
+      server: https://10.21.64.1:6443
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  orphanedResources:
+    warn: false
+  roles:
+    - name: admin
+      description: Role for MotionLab Backend Project
+      policies:
+        - p, proj:motionlab-backend-project:admin, applications, *, motionlab-backend-project/*, allow
+      groups:
+        - general

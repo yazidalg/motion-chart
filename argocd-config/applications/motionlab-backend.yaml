@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: motionlab-backend
+  namespace: argocd
+spec:
+  project: motionlab-backend-project
+  source:
+    repoURL: https://github.com/yazidalg/motion-chart.git
+    path: .
+    targetRevision: main
+    helm:
+      valueFiles:
+        - "motionlab-backend/values.yaml"
+  destination:
+    server: https://10.21.64.1:6443
+    namespace: motionlab-backend
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
