@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fradium
+  namespace: argocd
+spec:
+  project: fradium-project
+  source:
+    repoURL: https://github.com/yazidalg/motion-chart.git
+    path: .
+    targetRevision: main
+    helm:
+      valueFiles:
+        - "fradium/values.yaml"
+  destination:
+    server: https://10.21.64.1:6443
+    namespace: amanmemilih-fe
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
