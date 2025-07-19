@@ -14,7 +14,7 @@ spec:
         - "fradium/values.yaml"
   destination:
     server: https://10.21.64.1:6443
-    namespace: amanmemilih-fe
+    namespace: fradium
   syncPolicy:
     automated:
       prune: true

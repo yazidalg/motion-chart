@@ -4,7 +4,7 @@ metadata:
   name: fradium-project
   namespace: argocd
 spec:
-  description: Amanmemilih Frontend Project
+  description: Fradium Project
   sourceRepos:
     - "*"
   destinations:
@@ -17,7 +17,7 @@ spec:
     warn: false
   roles:
     - name: admin
-      description: Role for AmanMemilih Project
+      description: Role for Fradium Project
       policies:
         - p, proj:fradium-project:admin, applications, *, fradium-project/*, allow
       groups:
