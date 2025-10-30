@@ -4,8 +4,8 @@
 This Helm Chart is used to deploy and manage the Motion Chart application on your Kubernetes cluster.
 Follow the steps below to package, update, and publish the chart to your Helm repository.
 
-🚀 How to Use Motion Chart
-1. Package the Helm Chart
+# 🚀 How to Use Motion Chart
+### 1. Package the Helm Chart
 
 Run the following command to create a packaged .tgz file from your chart directory:
 
@@ -16,7 +16,7 @@ This will generate a file like:
 
 `motion-chart-<version>.tgz`
 
-2. Update the Helm Repository Index
+### 2. Update the Helm Repository Index
 
 After packaging, update the Helm repository index so Helm can recognize the new chart version:
 
@@ -25,7 +25,7 @@ After packaging, update the Helm repository index so Helm can recognize the new 
 
 This command will update (or create) the index.yaml file in your Helm chart repository directory.
 
-3. Push to Git Repository
+### 3. Push to Git Repository
 
 Commit and push the changes (including .tgz and index.yaml) to your Git repository:
 
