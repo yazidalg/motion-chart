@@ -29,9 +29,9 @@ This command will update (or create) the index.yaml file in your Helm chart repo
 
 Commit and push the changes (including .tgz and index.yaml) to your Git repository:
 
-`git add .`
-`git commit -m "chore: update motion-chart helm package"`
-`git push origin main`
+- `git add .`
+- `git commit -m "chore: update motion-chart helm package"`
+- `git push origin main`
 
 
 Make sure the repository (for example, GitHub Pages or GitHub Enterprise) is correctly configured as a Helm Chart repository.
@@ -40,9 +40,9 @@ Make sure the repository (for example, GitHub Pages or GitHub Enterprise) is cor
 
 You can add the repository and install the chart as follows:
 
-`helm repo add motion-chart-repo https://yazidalg.github.io/motion-chart/`
-`helm repo update`
-`helm install my-motion motion-chart-repo/motion-chart`
+- `helm repo add motion-chart-repo https://yazidalg.github.io/motion-chart/`
+- `helm repo update`
+- `helm install my-motion motion-chart-repo/motion-chart`
 
 # 🧩 Notes
 
