@@ -65,7 +65,14 @@ spec:
       {{- end }}
       {{- with .Values.affinity }}
       affinity:
-        {{- toYaml . | nindent 8 }}
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "node-role.kubernetes.io/worker"
+                    operator: In
+                    values:
+                      - {{ .Values.targetNode }}
       {{- end }}
       {{- with .Values.tolerations }}
       tolerations:
