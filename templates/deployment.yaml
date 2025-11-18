@@ -72,7 +72,7 @@ spec:
                   - key: "node-role.kubernetes.io/worker"
                     operator: In
                     values:
-                      - {{ .Values.targetNode }}
+                      - {{ .targetNode }}
       {{- end }}
       {{- with .Values.tolerations }}
       tolerations:

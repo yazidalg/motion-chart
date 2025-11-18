@@ -79,7 +79,8 @@ nodeSelector: {}
 
 tolerations: []
 
-targetNode: "cluster-yazid-worker-4"
+affinity:
+  targetNode: cluster-yazid-worker-4
 
 podDisruptionBudget:
   minAvailable: 2
