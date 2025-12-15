@@ -16,7 +16,7 @@ image:
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
 # This is to override the chart name.
-nameOverride: "amanmemilih-frontend"
+nameOverride: ""
 fullnameOverride: ""
 
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
@@ -62,17 +62,16 @@ service:
 ingress:
   enabled: true
   className: "nginx"
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  annotations: {}
   hosts:
-    - host: amanmemilih.motionlaboratory.com
+    - host: "frontend.motionlaboratory.com"
       paths:
         - path: /
           pathType: Prefix
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  tls:
+   - secretName: frontend-tls
+     hosts:
+       - frontend.motionlaboratory.com
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -117,7 +116,7 @@ tolerations: []
 
 affinity: {}
 
-configMapRef:
+configMapRef: {}
   # This is for setting up a secret reference for the container.
   # This is useful for pulling images from private repositories.
-  name: "amanmemilih-frontend-secret"
+  # name: "amanmemilih-frontend-secret"
