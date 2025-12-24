@@ -4,6 +4,8 @@ metadata:
   name: {{ include "motion-chart.fullname" . }}
   labels:
     {{- include "motion-chart.labels" . | nindent 4 }}
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
