@@ -39,11 +39,11 @@ spec:
           envFrom:
           {{- with .Values.configMapRef }}
             - configMapRef:
-                name: {{ .Values.configMapRef.name}}
+                name: {{ .name }}
           {{- end }}
           {{- with .Values.secretRef }}
             - secretRef:
-                name: {{ .Values.secretRef.name }}
+                name: {{ .name }}
           {{- end }}
           ports:
             - name: http
