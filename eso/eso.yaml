@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kv-reader-sa
+  namespace: amanmemilih-fe
+  annotations:
+    azure.workload.identity/client-id: "f67e9434-14f9-42f6-ba0a-bf315a45723d"
+    azure.workload.identity/tenant-id: "39c610d4-d88f-46db-95a4-6bac3317b825"
+---
+apiVersion: external-secrets.io/v1
+kind: SecretStore
+metadata:
+  name: azurekv-store
+  namespace: amanmemilih-fe
+spec:
+  provider:
+    azurekv:
+      authType: WorkloadIdentity
+      vaultUrl: "https://kv-dev-rg-yazid-poc.vault.azure.net/"
+      serviceAccountRef:
+        name: kv-reader-sa
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: frontend-secrets
+  namespace: amanmemilih-fe
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: azurekv-store
+    kind: SecretStore
+  target:
+    name: frontend-secrets
+    creationPolicy: Owner
+  data:
+    - secretKey: vite-api-url
+      remoteRef:
+        key: vite-api-url
