@@ -37,3 +37,6 @@ spec:
     - secretKey: vite-api-url
       remoteRef:
         key: vite-api-url
+    - secretKey: db-password
+      remoteRef:
+        key: db-password
