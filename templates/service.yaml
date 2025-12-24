@@ -10,6 +10,8 @@ spec:
     - name: http
       port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort | default .Values.service.port }}
-      nodePort: {{ .Values.service.nodePort | default .Values.service.port }}
+      {{- if and (or (eq .Values.service.type "NodePort") (eq .Values.service.type "LoadBalancer")) (index .Values.service "nodePort") }}
+      nodePort: {{ index .Values.service "nodePort" }}
+      {{- end }}
   selector:
     {{- include "motion-chart.selectorLabels" . | nindent 4 }}
