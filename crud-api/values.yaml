@@ -7,7 +7,7 @@ image:
   repository: 211104/internship
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v2.0.7-staging"
+  tag: "v2.0.8-staging"
 imagePullSecrets: []
 nameOverride: "crud-api"
 fullnameOverride: "crud-api"
