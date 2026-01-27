@@ -21,3 +21,13 @@
 .idea/
 *.tmproj
 .vscode/
+
+# Exclude subdirectory values files (only needed for specific deployments, not packaged in main chart)
+argocd/
+monitoring/
+atlantis/
+crud-api/
+metrics-server/
+sonarqube/
+vault/
+argocd-config/
