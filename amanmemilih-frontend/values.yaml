@@ -123,5 +123,4 @@ configMapRef: {}
   # This is useful for pulling images from private repositories.
   # name: "frontend-secrets"
 
-secretRef:
-  name: "frontend-secrets"
+secretRef: {}
