@@ -74,3 +74,6 @@ nodeSelector: {}
 tolerations: []
 affinity:
   targetNode: cluster-yazid-worker-4
+
+dast:
+  targetUrl: "http://10.87.1.241:30000/"
