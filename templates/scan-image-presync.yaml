@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: {{ include "helm-chart.fullname" . }}-scan-image-
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+        - name: trivy-scan-image
+          image: aquasec/trivy:0.55.2
+          command:
+            - trivy
+            - image
+            - --ignore-unfixed
+            - --severity
+            - HIGH,CRITICAL
+            - {{ .Values.image.repository }}:{{ .Values.image.tag }}
+      restartPolicy: Never
+  backoffLimit: 2
