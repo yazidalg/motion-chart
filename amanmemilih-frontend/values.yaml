@@ -110,3 +110,6 @@ configMapRef: {}
 # name: "frontend-secrets"
 
 secretRef: {}
+
+dast:
+  targetUrl: "http://10.87.1.240:30033/"
