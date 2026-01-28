@@ -12,7 +12,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: zap
-          image: ghcr.io/zaproxy/zap2docker-stable
+          image: ghcr.io/zaproxy/zaproxy:stable
           args:
             - sh
             - -c
