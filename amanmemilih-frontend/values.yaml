@@ -48,14 +48,14 @@ securityContext: {}
 # This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
 service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
-  type: NodePort
+  type: ClusterIP
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
   port: 3000
   targetPort: 3000
-  nodePort: 30033
+
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
-  enabled: false
+  enabled: true
   className: "nginx"
   annotations: {}
   hosts:
@@ -112,4 +112,4 @@ configMapRef: {}
 secretRef: {}
 
 dast:
-  targetUrl: "http://10.87.1.240:30033/"
+  targetUrl: "frontend.motionlaboratory.com"
