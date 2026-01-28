@@ -122,3 +122,6 @@ configMapRef:
   # This is for setting up a secret reference for the container.
   # This is useful for pulling images from private repositories.
   name: "amanmemilih-secret"
+
+dast:
+  targetUrl: "http://10.87.1.240:30033/"
