@@ -7,7 +7,7 @@ image:
   repository: 211104/internship
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v2.0.8-staging"
+  tag: "sha-c8e31ee78093"
 imagePullSecrets: []
 nameOverride: "crud-api"
 fullnameOverride: "crud-api"
@@ -74,6 +74,5 @@ nodeSelector: {}
 tolerations: []
 affinity:
   targetNode: cluster-yazid-worker-4
-
 dast:
   targetUrl: "http://10.87.1.241:30000/"
