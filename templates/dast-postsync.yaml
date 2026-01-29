@@ -23,7 +23,7 @@ spec:
             - name: APP_NAME
               value: "amanmemilih-frontend"
             - name: REVISION
-              value: {{ .Values.image.tag }}
+              value: "{{ .Values.image.tag }}"
           command: ["/bin/sh","-c"]
           args:
             - |
@@ -33,13 +33,11 @@ spec:
               PROJECT="GitOps Practices"
               PIPELINE_ID="46"
 
-              # Azure DevOps uses Basic auth with PAT commonly: base64(":PAT")
+              PROJECT_ENC="$(printf '%s' "$PROJECT" | sed 's/ /%20/g')"
+
               AUTH="$(printf ":%s" "$ADO_PAT" | base64 | tr -d '\n')"
+              URL="https://dev.azure.com/${ORG}/${PROJECT_ENC}/_apis/pipelines/${PIPELINE_ID}/runs?api-version=7.1"
 
-              # Run Pipeline endpoint
-              URL="https://dev.azure.com/${ORG}/${PROJECT}/_apis/pipelines/${PIPELINE_ID}/runs?api-version=7.1"
-
-              # Pass runtime parameters to your DAST pipeline
               BODY=$(cat <<EOF
               {
                 "templateParameters": {
