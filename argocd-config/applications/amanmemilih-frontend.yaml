@@ -13,9 +13,11 @@ spec:
       valueFiles:
         - "amanmemilih-frontend/values.yaml"
   destination:
-    server: https://kubernetes.default.svc
+    server: https://aks-dev-yazid-resource-group-eajtsi8n.hcp.southeastasia.azmk8s.io:443
     namespace: amanmemilih-fe
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true

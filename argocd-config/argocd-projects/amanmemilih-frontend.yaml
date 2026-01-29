@@ -9,7 +9,7 @@ spec:
     - "*"
   destinations:
     - namespace: "*"
-      server: https://kubernetes.default.svc
+      server: https://aks-dev-yazid-resource-group-eajtsi8n.hcp.southeastasia.azmk8s.io:443
   clusterResourceWhitelist:
     - group: "*"
       kind: "*"

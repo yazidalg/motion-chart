@@ -1,0 +1,58 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: trigger-dast-ado
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: trigger
+          image: curlimages/curl:8.5.0
+          env:
+            - name: ADO_PAT
+              valueFrom:
+                secretKeyRef:
+                  name: amanmemilih-frontend-secret
+                  key: pat
+            - name: TARGET_URL
+              value: "https://frontend.motionlaboratory.com/"
+            - name: APP_NAME
+              value: "amanmemilih-frontend"
+            - name: REVISION
+              value: {{ .Values.image.tag }}
+          command: ["/bin/sh","-c"]
+          args:
+            - |
+              set -euo pipefail
+
+              ORG="devops-psi"
+              PROJECT="GitOps Practices"
+              PIPELINE_ID="46"
+
+              # Azure DevOps uses Basic auth with PAT commonly: base64(":PAT")
+              AUTH="$(printf ":%s" "$ADO_PAT" | base64 | tr -d '\n')"
+
+              # Run Pipeline endpoint
+              URL="https://dev.azure.com/${ORG}/${PROJECT}/_apis/pipelines/${PIPELINE_ID}/runs?api-version=7.1"
+
+              # Pass runtime parameters to your DAST pipeline
+              BODY=$(cat <<EOF
+              {
+                "templateParameters": {
+                  "targetUrl": "${TARGET_URL}",
+                  "appName": "${APP_NAME}",
+                  "revision": "${REVISION}"
+                }
+              }
+              EOF
+              )
+
+              curl -sS -X POST \
+                -H "Authorization: Basic ${AUTH}" \
+                -H "Content-Type: application/json" \
+                --data "${BODY}" \
+                "${URL}"
